@@ -1,18 +1,19 @@
 package com.desafiowl.demo.Dtos;
 
 import com.desafiowl.demo.Model.Breakfast;
+import org.springframework.boot.autoconfigure.aop.AopAutoConfiguration;
 
 import java.time.LocalDate;
 
-public class CafeManhaDto {
+public class BreakfastDto {
 
     private long id;
-    private String nomeColaborador;
+    private String nameColaborator;
     private String cpf;
-    private String opcaoCafe;
+    private String optionBreakfast;
     private LocalDate data;
 
-    public CafeManhaDto() {
+    public BreakfastDto() {
 
     }
 
@@ -21,8 +22,8 @@ public class CafeManhaDto {
 
         breakfast.setCpf(this.cpf);
         breakfast.setData(this.data);
-        breakfast.setOpcaoCafe(this.opcaoCafe);
-        breakfast.setNomeColaborador(this.nomeColaborador);
+        breakfast.setOptionBreakfast(this.optionBreakfast);
+        breakfast.setNameColaborator(this.nameColaborator);
 
         return breakfast;
     }
@@ -35,12 +36,12 @@ public class CafeManhaDto {
         this.id = id;
     }
 
-    public String getNomeColaborador() {
-        return nomeColaborador;
+    public String getNameColaborator() {
+        return nameColaborator;
     }
 
-    public void setNomeColaborador(String nomeColaborador) {
-        this.nomeColaborador = nomeColaborador;
+    public void setNameColaborator(String nameColaborator) {
+        this.nameColaborator = nameColaborator;
     }
 
     public String getCpf() {
@@ -51,12 +52,12 @@ public class CafeManhaDto {
         this.cpf = cpf;
     }
 
-    public String getOpcaoCafe() {
-        return opcaoCafe;
+    public String getOptionBreakfast() {
+        return optionBreakfast;
     }
 
-    public void setOpcaoCafe(String opcaoCafe) {
-        this.opcaoCafe = opcaoCafe;
+    public void setOptionBreakfast(String optionBreakfast) {
+        this.optionBreakfast = optionBreakfast;
     }
 
     public LocalDate getData() {

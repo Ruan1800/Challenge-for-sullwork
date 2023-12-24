@@ -1,4 +1,4 @@
 package com.desafiowl.demo.Dtos;
 
-public class ColaboradorDto {
+public class ColaboratorDto {
 }

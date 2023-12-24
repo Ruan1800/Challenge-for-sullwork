@@ -1,32 +1,46 @@
 package com.desafiowl.demo.Controller;
 
-import com.desafiowl.demo.Dtos.CafeManhaDto;
-import com.desafiowl.demo.Services.CafeManhaService;
+import com.desafiowl.demo.Dtos.BreakfastDto;
+import com.desafiowl.demo.Services.BreakfastService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/cafe-da-manha")
-public class CafeManhaController {
+public class BreakfastController {
 
 
-    private final CafeManhaService cafeManhaService;
+    private final BreakfastService breakfastService;
 
 
-    public CafeManhaController(CafeManhaService cafeManhaService) {
-        this.cafeManhaService = cafeManhaService;
+    public BreakfastController(BreakfastService breakfastService) {
+        this.breakfastService = breakfastService;
     }
 
-    @PostMapping("/adicionar")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void adicionarCafeDaManha(@RequestBody CafeManhaDto cafeManha) {
-        cafeManhaService.adicionarCafe(cafeManha);
+    public void addBreakfast(@RequestBody BreakfastDto breakfast) {
+        breakfastService.addBreakfast(breakfast);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CafeManhaDto buscarCafePorId(@PathVariable("id") long id) {
-        return  cafeManhaService.buscarCafePorId(id);
+    public BreakfastDto GetBreakFastWithId(@PathVariable("id") long id) {
+        return  breakfastService.GetBreakFastWithId(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public BreakfastDto updateBreakfast(@PathVariable("id") long id, @RequestBody BreakfastDto updatedBreakfast) {
+        ResponseEntity<String> updateBreakfast = breakfastService.updateBreakfast(id, updatedBreakfast);
+        return updatedBreakfast;
     }
 
 }
+
+
+
+
+
+
+

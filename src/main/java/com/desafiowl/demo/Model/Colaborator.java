@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Colaborador {
+public class Colaborator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,12 +15,12 @@ public class Colaborador {
     private String cpf;
 
 
-    public Colaborador(long id, String nome, String cpf) {
+    public Colaborator(long id, String nome, String cpf) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
     }
-    public Colaborador(){
+    public Colaborator(){
     }
 
     public Long getId() {

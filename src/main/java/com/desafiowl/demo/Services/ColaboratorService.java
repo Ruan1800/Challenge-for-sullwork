@@ -1,4 +1,4 @@
 package com.desafiowl.demo.Services;
 
-public class ColaboradorService {
+public class ColaboratorService {
 }

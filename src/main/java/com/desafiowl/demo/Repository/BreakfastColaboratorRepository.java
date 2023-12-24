@@ -1,6 +1,6 @@
 package com.desafiowl.demo.Repository;
 
-public interface CafeColaboradorRepository {
+public interface BreakfastColaboratorRepository {
 
 
 

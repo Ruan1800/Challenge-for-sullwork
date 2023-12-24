@@ -1,6 +1,6 @@
 package com.desafiowl.demo.Model;
 
-import com.desafiowl.demo.Dtos.CafeManhaDto;
+import com.desafiowl.demo.Dtos.BreakfastDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,35 +10,35 @@ import java.time.LocalDate;
 
 
 @Entity
-public class CafeManha {
+public class Breakfast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String nomeColaborador;
+    private String nameColaborator;
     private String cpf;
-    private String opcaoCafe;
+    private String optionBreakfast;
     private LocalDate data;
 
-    public CafeManha(long id, String nomeColaborador, String cpf, String opcaoCafe, LocalDate date) {
+    public Breakfast(long id, String nameColaborator, String cpf, String optionBreakfast, LocalDate date) {
         this.id = id;
-        this.nomeColaborador = nomeColaborador;
+        this.nameColaborator = nameColaborator;
         this.cpf = cpf;
-        this.opcaoCafe = opcaoCafe;
+        this.optionBreakfast = optionBreakfast;
         this.data = date;
     }
 
-    public CafeManha() {
+    public Breakfast() {
     }
 
-    public CafeManhaDto toDTO() {
-        CafeManhaDto cafeManha = new CafeManhaDto();
+    public BreakfastDto toDTO() {
+        BreakfastDto cafeManha = new BreakfastDto();
 
         cafeManha.setId(this.id);
         cafeManha.setCpf(this.cpf);
         cafeManha.setData(this.data);
-        cafeManha.setOpcaoCafe(this.opcaoCafe);
-        cafeManha.setNomeColaborador(this.nomeColaborador);
+        cafeManha.setOptionBreakfast(this.optionBreakfast);
+        cafeManha.setNameColaborator(this.nameColaborator);
 
         return cafeManha;
     }
@@ -51,12 +51,12 @@ public class CafeManha {
         this.id = id;
     }
 
-    public String getNomeColaborador() {
-        return nomeColaborador;
+    public String getNameColaborator() {
+        return nameColaborator;
     }
 
-    public void setNomeColaborador(String nomeColaborador) {
-        this.nomeColaborador = nomeColaborador;
+    public void setNameColaborator(String nomeColaborador) {
+        this.nameColaborator = nomeColaborador;
     }
 
     public String getCpf() {
@@ -67,12 +67,12 @@ public class CafeManha {
         this.cpf = cpf;
     }
 
-    public String getOpcaoCafe() {
-        return opcaoCafe;
+    public String getOptionBreakfast() {
+        return optionBreakfast;
     }
 
-    public void setOpcaoCafe(String opcaoCafe) {
-        this.opcaoCafe = opcaoCafe;
+    public void setOptionBreakfast(String optionBreakfast) {
+        this.optionBreakfast = optionBreakfast;
     }
 
     public LocalDate getData() {
