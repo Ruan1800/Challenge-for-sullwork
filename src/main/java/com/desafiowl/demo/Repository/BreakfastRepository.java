@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.yaml.snakeyaml.events.Event;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,5 +25,8 @@ public interface BreakfastRepository extends JpaRepository<Breakfast, Long> {
     Optional<Breakfast> findOneById(Long id);
 
 
+    boolean existsByDataAndOptionBreakfast(LocalDate data, String optionBreakfast);
 
+
+    boolean existsByCpf(String cpf);
 }

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,14 +53,39 @@ public class BreakfastService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Breakfast not found");
         }
     }
-
     private void validateBreakfast(BreakfastDto breakfastDto) {
+        if (breakfastDto.getCpf() == null || !breakfastDto.getCpf().matches("\\d{11}")) {
+            throw new IllegalArgumentException("CPF must be valid and have 11 digits");
+        }
 
 
 
+        if (breakfastDto.getData() != null && breakfastDto.getData().isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Café da manhã não pode ser agendado para uma data passada");
+        }
 
 
-}
+        if (breakfastDto.getData() != null && breakfastDto.getOptionBreakfast() != null &&
+                this.breakfastRepository.existsByDataAndOptionBreakfast(breakfastDto.getData(), breakfastDto.getOptionBreakfast())) {
+            throw new IllegalArgumentException("Opção de café já foi escolhida por outro colaborador nesta data");
+        }
+
+
+        if (breakfastDto.getCpf() != null && this.breakfastRepository.existsByCpf(breakfastDto.getCpf())) {
+            throw new IllegalArgumentException("CPF já foi utilizado por outro colaborador");
+        }
+    }
+    public ResponseEntity<String> deleteBreakfast(long id) {
+        Optional<Breakfast> optionalBreakfast = this.breakfastRepository.findById(id);
+
+        if (optionalBreakfast.isPresent()) {
+            this.breakfastRepository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Breakfast deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Breakfast not found");
+        }
+    }
+
 }
 
 

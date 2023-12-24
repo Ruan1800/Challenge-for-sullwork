@@ -36,7 +36,15 @@ public class BreakfastController {
         return updatedBreakfast;
     }
 
+    public ResponseEntity<String> deleteBreakfast(@PathVariable("id") long id) {
+        ResponseEntity<String> response = breakfastService.deleteBreakfast(id);
+        return response;
+    }
 }
+
+
+
+
 
 
 
