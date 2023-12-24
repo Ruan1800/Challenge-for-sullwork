@@ -4,6 +4,7 @@ import com.desafiowl.demo.Model.Breakfast;
 import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.yaml.snakeyaml.events.Event;
 
@@ -25,8 +26,10 @@ public interface BreakfastRepository extends JpaRepository<Breakfast, Long> {
     Optional<Breakfast> findOneById(Long id);
 
 
-    boolean existsByDataAndOptionBreakfast(LocalDate data, String optionBreakfast);
+    @Query(nativeQuery = true, value = "SELECT COUNT(*) > 0 FROM CAFE_MANHA WHERE data = :data AND option_breakfast = :optionBreakfast")
+    boolean existsByDataAndOptionBreakfast(@Param("data") LocalDate data, @Param("optionBreakfast") String optionBreakfast);
 
+    @Query(nativeQuery = true, value = "SELECT COUNT(*) > 0 FROM CAFE_MANHA WHERE cpf = :cpf")
+    boolean existsByCpf(@Param("cpf") String cpf);
 
-    boolean existsByCpf(String cpf);
 }

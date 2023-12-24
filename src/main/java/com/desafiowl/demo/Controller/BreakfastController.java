@@ -3,11 +3,10 @@ package com.desafiowl.demo.Controller;
 import com.desafiowl.demo.Dtos.BreakfastDto;
 import com.desafiowl.demo.Services.BreakfastService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/cafe-da-manha")
+@RequestMapping("/api/Break-fast")
 public class BreakfastController {
 
 
@@ -27,20 +26,24 @@ public class BreakfastController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public BreakfastDto GetBreakFastWithId(@PathVariable("id") long id) {
-        return  breakfastService.GetBreakFastWithId(id);
+        return breakfastService.GetBreakFastWithId(id);
     }
 
-    @PutMapping("/update/{id}")
-    public BreakfastDto updateBreakfast(@PathVariable("id") long id, @RequestBody BreakfastDto updatedBreakfast) {
-        ResponseEntity<String> updateBreakfast = breakfastService.updateBreakfast(id, updatedBreakfast);
-        return updatedBreakfast;
+    @DeleteMapping("/delete/{id}")
+    public BreakfastDto deleteBreakfastById(@PathVariable("id") long id) {
+        return breakfastService.deleteBreakfastById(id);
     }
 
-    public ResponseEntity<String> deleteBreakfast(@PathVariable("id") long id) {
-        ResponseEntity<String> response = breakfastService.deleteBreakfast(id);
-        return response;
     }
-}
+
+
+
+
+
+
+
+
+
 
 
 

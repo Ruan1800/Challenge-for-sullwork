@@ -32,15 +32,15 @@ public class Breakfast {
     }
 
     public BreakfastDto toDTO() {
-        BreakfastDto cafeManha = new BreakfastDto();
+        BreakfastDto breakfast = new BreakfastDto();
 
-        cafeManha.setId(this.id);
-        cafeManha.setCpf(this.cpf);
-        cafeManha.setData(this.data);
-        cafeManha.setOptionBreakfast(this.optionBreakfast);
-        cafeManha.setNameColaborator(this.nameColaborator);
+        breakfast.setId(this.id);
+        breakfast.setCpf(this.cpf);
+        breakfast.setData(this.data);
+        breakfast.setOptionBreakfast(this.optionBreakfast);
+        breakfast.setNameColaborator(this.nameColaborator);
 
-        return cafeManha;
+        return breakfast;
     }
 
     public long getId() {
