@@ -1,7 +1,6 @@
 package com.desafiowl.demo.Controller;
 
 import com.desafiowl.demo.Dtos.CafeManhaDto;
-import com.desafiowl.demo.Model.CafeManha;
 import com.desafiowl.demo.Services.CafeManhaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/cafe-da-manha")
 public class CafeManhaController {
+
 
     private final CafeManhaService cafeManhaService;
 

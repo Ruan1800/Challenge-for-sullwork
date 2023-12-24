@@ -1,6 +1,6 @@
 package com.desafiowl.demo.Dtos;
 
-import com.desafiowl.demo.Model.CafeManha;
+import com.desafiowl.demo.Model.Breakfast;
 
 import java.time.LocalDate;
 
@@ -16,15 +16,15 @@ public class CafeManhaDto {
 
     }
 
-    public CafeManha toEntity() {
-        CafeManha cafeManha = new CafeManha();
+    public Breakfast toEntity() {
+        Breakfast breakfast = new Breakfast();
 
-        cafeManha.setCpf(this.cpf);
-        cafeManha.setData(this.data);
-        cafeManha.setOpcaoCafe(this.opcaoCafe);
-        cafeManha.setNomeColaborador(this.nomeColaborador);
+        breakfast.setCpf(this.cpf);
+        breakfast.setData(this.data);
+        breakfast.setOpcaoCafe(this.opcaoCafe);
+        breakfast.setNomeColaborador(this.nomeColaborador);
 
-        return cafeManha;
+        return breakfast;
     }
 
     public long getId() {
