@@ -19,11 +19,10 @@ public class BreakfastDto {
 
     public Breakfast toEntity() {
         Breakfast breakfast = new Breakfast();
-
         breakfast.setCpf(this.cpf);
         breakfast.setData(this.data);
-        breakfast.setOptionBreakfast(this.optionBreakfast);
-        breakfast.setNameColaborator(this.nameColaborator);
+        breakfast.setOptionBreakfast(this.optionBreakfast.toUpperCase());
+        breakfast.setNameColaborator(this.nameColaborator.toUpperCase());
 
         return breakfast;
     }

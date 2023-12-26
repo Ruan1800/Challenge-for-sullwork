@@ -5,36 +5,50 @@ import com.desafiowl.demo.Services.BreakfastService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/Break-fast")
+@RequestMapping("/api/break-fast")
 public class BreakfastController {
 
-
     private final BreakfastService breakfastService;
-
 
     public BreakfastController(BreakfastService breakfastService) {
         this.breakfastService = breakfastService;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addBreakfast(@RequestBody BreakfastDto breakfast) {
-        breakfastService.addBreakfast(breakfast);
+    public BreakfastDto addBreakfast(@RequestBody BreakfastDto breakfast) {
+        return this.breakfastService.addBreakfast(breakfast);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<BreakfastDto> getAllBreakFastByData(@RequestParam(value = "data", required = false) LocalDate data) {
+        return this.breakfastService.getAllBreakFastByData(data);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BreakfastDto GetBreakFastWithId(@PathVariable("id") long id) {
-        return breakfastService.GetBreakFastWithId(id);
+    public BreakfastDto getBreakFastWithId(@PathVariable("id") Long id) {
+        return this.breakfastService.getBreakFastWithId(id);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public BreakfastDto deleteBreakfastById(@PathVariable("id") long id) {
-        return breakfastService.deleteBreakfastById(id);
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public BreakfastDto updateBreakFast(@PathVariable("id") Long id, @RequestBody BreakfastDto breakfastDto) {
+        return this.breakfastService.updateBreakfast(breakfastDto, id);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBreakFast(@PathVariable("id") Long id) {
+        this.breakfastService.deleteBreakFast(id);
     }
+}
+
 
 
 

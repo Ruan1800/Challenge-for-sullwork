@@ -1,12 +1,31 @@
 package com.desafiowl.demo.exception;
 
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class AbstractException extends RuntimeException {
 
-    private String erro;
-    private String descricao;
+    private String msg;
+    private List<String> mensages;
 
-    protected AbstractException(String erro, String descricao) {
-        this.erro = erro;
-        this.descricao = descricao;
+    protected AbstractException(String msg, List<String> msgs) {
+        this.msg = msg;
+        this.mensages = msgs;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public List<String> getMensagens() {
+        return mensages;
+    }
+
+    public void setMensagens(List<String> mensagens) {
+        this.mensages = mensagens;
     }
 }

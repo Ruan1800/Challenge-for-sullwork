@@ -1,8 +1,10 @@
 package com.desafiowl.demo.exception;
 
+import java.util.List;
+
 public class BadRequestException extends AbstractException {
 
-    public BadRequestException(String descricao) {
-        super(descricao);
+    public BadRequestException(List<String> msgs) {
+        super("BadRequest", msgs);
     }
 }
