@@ -6,11 +6,11 @@ import java.util.List;
 public abstract class AbstractException extends RuntimeException {
 
     private String msg;
-    private List<String> mensages;
+    private List<String> messages;
 
     protected AbstractException(String msg, List<String> msgs) {
         this.msg = msg;
-        this.mensages = msgs;
+        this.messages = msgs;
     }
 
     public String getMsg() {
@@ -22,10 +22,10 @@ public abstract class AbstractException extends RuntimeException {
     }
 
     public List<String> getMensagens() {
-        return mensages;
+        return messages;
     }
 
     public void setMensagens(List<String> mensagens) {
-        this.mensages = mensagens;
+        this.messages = mensagens;
     }
 }

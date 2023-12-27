@@ -5,7 +5,7 @@ import com.desafiowl.demo.Model.Breakfast;
 import com.desafiowl.demo.Repository.BreakfastRepository;
 import com.desafiowl.demo.exception.BadRequestException;
 import com.desafiowl.demo.exception.NotFoundException;
-import com.desafiowl.demo.utils.CpfValidator;
+import com.desafiowl.demo.utils.CpfValidador;
 import io.micrometer.common.util.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +46,7 @@ public class BreakfastService {
         return breakfastSave.toDTO();
     }
 
-    public List<BreakfastDto> getAllBreakFastByData(LocalDate date) {
+    public List<BreakfastDto> getAllBreakFastByDate(LocalDate date) {
         List<Breakfast> list = this.breakfastRepository.findAllBreakFastByData(date);
 
         return list.stream().map(x -> x.toDTO()).toList();
@@ -76,12 +76,12 @@ public class BreakfastService {
             validationErros.add("Breakfast option is mandatory!");
         if (StringUtils.isBlank(breakfastDto.getNameColaborator().trim()))
             validationErros.add("Colaborator name is mandatory!");
-        if (breakfastDto.getData() == null) validationErros.add("Data do café da manhã é obrigatória!");
+            if (breakfastDto.getData() == null) validationErros.add("Breakfast date is mandatory!");
         if (breakfastDto.getData().isBefore(LocalDate.now()))
             validationErros.add("Breakfast date cannot be earlier than the current date!");
         if (StringUtils.isBlank(breakfastDto.getCpf().trim())) validationErros.add("CPF is mandatory");
         if (breakfastDto.getCpf().trim().length() > 11) validationErros.add("CPF must have 11 characters!");
-        if (!CpfValidator.isValidCpf(breakfastDto.getCpf().trim())) validationErros.add("CPF invalid!");
+        if (!CpfValidador.isValidCpf(breakfastDto.getCpf().trim())) validationErros.add("CPF invalid!");
         if (existCpf > 0)
             validationErros.add("Colaborator  Name:" + breakfastDto.getNameColaborator().toUpperCase() + " and CPF: " + breakfastDto.getCpf() + " already partake of breakfast of the day " + breakfastDto.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 

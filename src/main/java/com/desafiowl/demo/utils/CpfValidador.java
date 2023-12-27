@@ -1,6 +1,6 @@
 package com.desafiowl.demo.utils;
 
-public class CpfValidator {
+public class CpfValidador {
 
     public static boolean isValidCpf(String cpf) {
         if (cpf == null || cpf.length() != 11) {

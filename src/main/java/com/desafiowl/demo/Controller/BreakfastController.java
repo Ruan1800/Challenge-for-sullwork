@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/break-fast")
 public class BreakfastController {
@@ -26,8 +27,8 @@ public class BreakfastController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<BreakfastDto> getAllBreakFastByData(@RequestParam(value = "data", required = false) LocalDate data) {
-        return this.breakfastService.getAllBreakFastByData(data);
+    public List<BreakfastDto> getAllBreakFastByDate(@RequestParam(value = "date", required = false) LocalDate data) {
+        return this.breakfastService.getAllBreakFastByDate(data);
     }
 
     @GetMapping("/{id}")
