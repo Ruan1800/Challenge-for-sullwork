@@ -64,10 +64,6 @@ public class BreakfastService {
         this.breakfastRepository.deleteBreakFastById(id);
     }
 
-
-
-
-
     private void validateBreakFast(BreakfastDto breakfastDto) {
         List<String> validationErros = new ArrayList<>();
         Long existCpf = this.breakfastRepository.existsByCpfAndData(breakfastDto.getCpf().trim(), breakfastDto.getData());
@@ -76,7 +72,7 @@ public class BreakfastService {
             validationErros.add("Breakfast option is mandatory!");
         if (StringUtils.isBlank(breakfastDto.getNameColaborator().trim()))
             validationErros.add("Colaborator name is mandatory!");
-            if (breakfastDto.getData() == null) validationErros.add("Breakfast date is mandatory!");
+        if (breakfastDto.getData() == null) validationErros.add("Breakfast date is mandatory!");
         if (breakfastDto.getData().isBefore(LocalDate.now()))
             validationErros.add("Breakfast date cannot be earlier than the current date!");
         if (StringUtils.isBlank(breakfastDto.getCpf().trim())) validationErros.add("CPF is mandatory");
