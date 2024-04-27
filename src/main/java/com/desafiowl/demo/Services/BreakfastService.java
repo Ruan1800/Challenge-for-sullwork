@@ -66,7 +66,7 @@ public class BreakfastService {
 
     private void validateBreakFast(BreakfastDto breakfastDto) {
         List<String> validationErros = new ArrayList<>();
-        Long existCpf = this.breakfastRepository.existsByCpfAndData(breakfastDto.getCpf().trim(), breakfastDto.getData());
+        Boolean existCpf = this.breakfastRepository.existsByCpfAndData(breakfastDto.getCpf().trim(), breakfastDto.getData());
 
         if (StringUtils.isBlank(breakfastDto.getOptionBreakfast().trim()))
             validationErros.add("Breakfast option is mandatory!");
@@ -78,12 +78,12 @@ public class BreakfastService {
         if (StringUtils.isBlank(breakfastDto.getCpf().trim())) validationErros.add("CPF is mandatory");
         if (breakfastDto.getCpf().trim().length() > 11) validationErros.add("CPF must have 11 characters!");
         if (!CpfValidador.isValidCpf(breakfastDto.getCpf().trim())) validationErros.add("CPF invalid!");
-        if (existCpf > 0)
+        if (existCpf)
             validationErros.add("Colaborator  Name:" + breakfastDto.getNameColaborator().toUpperCase() + " and CPF: " + breakfastDto.getCpf() + " already partake of breakfast of the day " + breakfastDto.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
-        Long existsByDataAndOptionBreakfast = this.breakfastRepository.existsByDataAndOptionBreakfast(breakfastDto.getData(), breakfastDto.getOptionBreakfast().toUpperCase().trim());
+        Boolean existsByDataAndOptionBreakfast = this.breakfastRepository.existsByDataAndOptionBreakfast(breakfastDto.getData(), breakfastDto.getOptionBreakfast().toUpperCase().trim());
 
-        if (existsByDataAndOptionBreakfast > 0)
+        if (existsByDataAndOptionBreakfast)
             validationErros.add("of the day " + breakfastDto.getData().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " For breakfast you already have: " + breakfastDto.getOptionBreakfast().toUpperCase().trim());
 
         if (validationErros.size() > 0) throw new BadRequestException(validationErros);

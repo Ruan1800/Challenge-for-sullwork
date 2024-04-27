@@ -19,10 +19,10 @@ public interface BreakfastRepository extends JpaRepository<Breakfast, Long> {
     Optional<Breakfast> findBreakfastById(@Param("id") Long id);
 
     @Query(nativeQuery = true, value = "select count(*) > 0 from breakfast where data = :data AND option_breakfast = :optionBreakfast")
-    Long existsByDataAndOptionBreakfast(@Param("data") LocalDate data, @Param("optionBreakfast") String optionBreakfast);
+    Boolean existsByDataAndOptionBreakfast(@Param("data") LocalDate data, @Param("optionBreakfast") String optionBreakfast);
 
     @Query(nativeQuery = true, value = "select count(*) > 0 from breakfast where cpf = :cpf AND data = :data")
-    Long existsByCpfAndData(@Param("cpf") String cpf, @Param("data") LocalDate data);
+    Boolean existsByCpfAndData(@Param("cpf") String cpf, @Param("data") LocalDate data);
 
     @Query(nativeQuery = true, value = "select * from breakfast where data = :data")
     List<Breakfast> findAllBreakFastByData(@Param("data") LocalDate data);
